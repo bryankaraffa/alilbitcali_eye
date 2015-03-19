@@ -1,0 +1,3 @@
+[submodule "includes/rss_eye"]
+	path = includes/rss_eye
+	url = https://github.com/bryankaraffa/rss_eye.git
