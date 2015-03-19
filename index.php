@@ -90,8 +90,15 @@ foreach ($fiftycampfires->items['new'] as $item) {
 
 //
 
-
-
+if (isset($argv)) {
+  foreach ($argv as $arg) {
+    switch ($arg) {
+      case '--disable-output':
+          $disable_output = true;
+          break;
+   }
+  }
+}
 /* attempt connection */
 $link = mysqli_connect($mysql_host, $mysql_user, $mysql_pass, $mysql_db);
 /* check connection */
@@ -110,8 +117,10 @@ if (count($newItems) > 0) {
 }
 
 // Print Saved Items
-$items = getItems();
-printItems($items);
+if (!isset($disable_output) || $disable_output != true) {
+  $items = getItems();
+  printItems($items);
+}
 
 /* close connection */
 mysqli_close($link);
